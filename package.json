@@ -1,0 +1,22 @@
+{
+  "name": "luncher",
+  "version": "0.1.0",
+  "description": "Game launcher",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hinamiyagk/luncher.git"
+  },
+  "author": "Hinata",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hinamiyagk/luncher/issues"
+  },
+  "homepage": "https://github.com/hinamiyagk/luncher#readme",
+  "devDependencies": {
+    "electron": "^1.6.2"
+  }
+}
