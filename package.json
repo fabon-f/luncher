@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hinamiyagk/luncher#readme",
   "devDependencies": {
-    "electron": "^1.6.2"
+    "electron": "^1.6.2",
+    "eslint": "^3.17.1"
   }
 }
