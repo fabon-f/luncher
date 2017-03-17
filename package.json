@@ -2,9 +2,10 @@
   "name": "luncher",
   "version": "0.1.0",
   "description": "Game launcher",
-  "main": "index.js",
+  "main": "dest/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "babel src -d dest"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,8 @@
   },
   "homepage": "https://github.com/hinamiyagk/luncher#readme",
   "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-preset-env": "^1.2.2",
     "electron": "^1.6.2",
     "eslint": "^3.17.1"
   }
