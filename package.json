@@ -5,7 +5,8 @@
   "main": "dest/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "babel src -d dest"
+    "build": "babel src -d dest",
+    "watch": "babel src -d dest -w"
   },
   "repository": {
     "type": "git",
