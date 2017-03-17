@@ -20,7 +20,7 @@
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-preset-env": "^1.2.2",
-    "electron": "^1.6.2",
+    "electron": "1.6.2",
     "eslint": "^3.17.1"
   }
 }
