@@ -1,5 +1,5 @@
 const electron = require("electron");
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, ipcMain, dialog } = electron;
 const path = require("path");
 const url = require("url");
 
@@ -30,4 +30,13 @@ app.on("activate", () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+ipcMain.on("game-directory", e => {
+  dialog.showOpenDialog({
+    properties: ["openDirectory"]
+  }, paths => {
+    if (!Array.isArray(paths)) { return; }
+    e.sender.send("game-directory", paths[0]);
+  });
 });
