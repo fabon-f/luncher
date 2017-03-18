@@ -1,2 +1,9 @@
 /* eslint-env browser */
-console.log("It works!"); // eslint-disable-line no-console
+(() => {
+  const preventDrop = e => {
+    e.preventDefault();
+    return false;
+  };
+  document.addEventListener("drop", preventDrop);
+  document.addEventListener("dragover", preventDrop);
+}) ();
