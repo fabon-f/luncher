@@ -5,8 +5,11 @@
   "main": "dest/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "babel src -d dest",
-    "watch": "babel src -d dest -w"
+    "clean": "rimraf dest",
+    "build:main": "rollup src/index.js -c rollup.config.common.js -f cjs -o dest/index.js",
+    "build:renderer": "rollup -c rollup.config.renderer.js",
+    "build": "npm-run-all clean -p build:*",
+    "watch": "npm-run-all clean -p \"build:* -- -w\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +25,11 @@
     "babel-cli": "^6.24.0",
     "babel-preset-env": "^1.2.2",
     "electron": "1.6.2",
-    "eslint": "^3.17.1"
+    "eslint": "^3.17.1",
+    "npm-run-all": "^4.0.2",
+    "rimraf": "^2.6.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-watch": "^3.2.2"
   }
 }
