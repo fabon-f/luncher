@@ -1,9 +1,8 @@
 /* eslint-env browser */
 const { ipcRenderer } = require("electron");
-
-ipcRenderer.on("game-directory", (_e, directory) => {
-  localStorage.setItem("directory", directory);
-});
+import { render, h, Component } from "preact";
+import App from "./app";
+import Store from "./store";
 
 const preventDrop = e => {
   e.preventDefault();
@@ -12,6 +11,31 @@ const preventDrop = e => {
 document.addEventListener("drop", preventDrop);
 document.addEventListener("dragover", preventDrop);
 
-document.getElementById("game-directory").addEventListener("click", () => {
+const store = new Store({
+  directory: null
+});
+
+const dispatch = store.emit.bind(store);
+
+ipcRenderer.on("game-directory", (_e, directory) => {
+  store.update(state => {
+    state.directory = directory;
+    return state;
+  });
+});
+
+store.on("game-directory", () => {
   ipcRenderer.send("game-directory");
 });
+
+class AppContainer extends Component {
+  render() {
+    const state = store.getState();
+    return h(App, { state, dispatch });
+  }
+  componentDidMount() {
+    store.on("update", () => this.forceUpdate());
+  }
+}
+
+render(h(AppContainer), document.getElementById("app"));
