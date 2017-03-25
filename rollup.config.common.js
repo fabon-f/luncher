@@ -11,5 +11,6 @@ export default {
     babel({
       exclude: "node_modules/**"
     })
-  ]
+  ],
+  sourceMap: process.env.NODE_ENV !== "production"
 };
